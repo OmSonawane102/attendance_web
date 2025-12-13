@@ -6,6 +6,8 @@
     <title>Student Attendance Management System</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -47,16 +49,63 @@
                 </div>
 
                 <p style="text-align: center; margin-top: 20px; color: #666; font-size: 14px;">
-                    Demo: Student ID: S001, Teacher ID: T001, Password: password
+                    <strong>Demo Credentials:</strong><br>
+                    Student: ID = S001, Password = password<br>
+                    Teacher: ID = T001, Password = password
                 </p>
+                <p style="text-align: center; margin-top: 10px;">
+                    <a href="#" onclick="showPage('teacherRegisterPage'); return false;" style="color: #1e3a8a; font-weight: 600;">
+                        📝 Don't have a teacher account? Register here
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Teacher Registration Page -->
+        <div id="teacherRegisterPage" class="page">
+            <h1>👨‍🏫 Teacher Registration</h1>
+            <div class="login-container">
+                <div class="success-message" id="registerSuccessMsg"></div>
+                <div class="error-message" id="registerErrorMsg"></div>
+
+                <form onsubmit="registerTeacher(event)">
+                    <div class="form-group">
+                        <label>Teacher ID</label>
+                        <input type="text" id="regTeacherId" required placeholder="e.g., T002">
+                    </div>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="regTeacherName" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="regTeacherEmail" required placeholder="teacher@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="regTeacherPassword" required placeholder="Create a password" minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="regTeacherConfirmPassword" required placeholder="Confirm your password" minlength="6">
+                    </div>
+                    <button type="submit">Register</button>
+                    <button type="button" class="btn-secondary" onclick="showPage('loginPage')">Back to Login</button>
+                </form>
             </div>
         </div>
 
         <!-- Teacher Dashboard -->
         <div id="teacherPage" class="page">
             <div class="header">
-                <h1>👨‍🏫 Teacher Dashboard</h1>
-                <button class="logout-btn" onclick="logout()">Logout</button>
+                <div>
+                    <h1>👨‍🏫 Teacher Dashboard</h1>
+                    <p id="teacherWelcome" style="color: #666; margin-top: 5px;"></p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn-secondary" onclick="downloadTeacherReport()" style="width: auto; padding: 10px 20px;">📄 Download Report</button>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
             </div>
 
             <div class="success-message" id="teacherSuccessMsg"></div>
@@ -137,7 +186,10 @@
         <div id="studentPage" class="page">
             <div class="header">
                 <h1>👨‍🎓 Student Dashboard</h1>
-                <button class="logout-btn" onclick="logout()">Logout</button>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn-secondary" onclick="downloadStudentReport()" style="width: auto; padding: 10px 20px;">📄 Download Report</button>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
             </div>
 
             <div id="studentInfo"></div>
