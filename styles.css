@@ -152,6 +152,8 @@ button:hover {
     margin-bottom: 30px;
     padding-bottom: 20px;
     border-bottom: 2px solid #e0e0e0;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .logout-btn {
@@ -292,4 +294,31 @@ button:hover {
     margin-bottom: 20px;
     display: none;
     border-left: 4px solid #ef4444;
+}
+
+a {
+    color: #1e3a8a;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .header h1 {
+        font-size: 1.8em;
+        text-align: left;
+    }
 }
