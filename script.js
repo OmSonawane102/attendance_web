@@ -139,7 +139,10 @@ function loadTeacherDashboard() {
                 <h3>${student.name}</h3>
                 <p>ID: ${student.id} | Class: ${student.class} | Email: ${student.email}</p>
             </div>
-            <button class="btn-danger" onclick="deleteStudent('${student.id}')" style="width: auto; padding: 8px 20px;">Delete</button>
+            <div class="attendance-controls">
+                <button class="btn-secondary" onclick="editStudent('${student.id}')" style="width: auto; padding: 8px 20px;">Edit</button>
+                <button class="btn-danger" onclick="deleteStudent('${student.id}')" style="width: auto; padding: 8px 20px;">Delete</button>
+            </div>
         </div>
     `).join('');
 }
@@ -173,6 +176,49 @@ function addStudent(event) {
 
     students.push({ id, name, class: studentClass, email, attendance: [] });
     showSuccessMessage('addStudentSuccessMsg', 'Student added successfully!');
+    
+    setTimeout(() => {
+        showPage('teacherPage');
+        loadTeacherDashboard();
+    }, 1500);
+}
+
+function editStudent(studentId) {
+    const student = students.find(s => s.id === studentId);
+    if (!student) {
+        alert('Student not found!');
+        return;
+    }
+
+    // Pre-fill the edit form with student data
+    document.getElementById('editStudentId').value = student.id;
+    document.getElementById('editStudentName').value = student.name;
+    document.getElementById('editStudentClass').value = student.class;
+    document.getElementById('editStudentEmail').value = student.email;
+
+    // Show edit page
+    showPage('editStudentPage');
+}
+
+function updateStudent(event) {
+    event.preventDefault();
+    const id = document.getElementById('editStudentId').value;
+    const name = document.getElementById('editStudentName').value;
+    const studentClass = document.getElementById('editStudentClass').value;
+    const email = document.getElementById('editStudentEmail').value;
+
+    const studentIndex = students.findIndex(s => s.id === id);
+    if (studentIndex === -1) {
+        showErrorMessage('editStudentErrorMsg', 'Student not found!');
+        return;
+    }
+
+    // Update student data (keep attendance history)
+    students[studentIndex].name = name;
+    students[studentIndex].class = studentClass;
+    students[studentIndex].email = email;
+
+    showSuccessMessage('editStudentSuccessMsg', 'Student updated successfully!');
     
     setTimeout(() => {
         showPage('teacherPage');
