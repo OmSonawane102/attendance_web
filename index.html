@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Page -->
+        <div id="loginPage" class="page active">
+            <h1>📚 Student Attendance System</h1>
+            <div class="login-container">
+                <div class="error-message" id="loginErrorMsg"></div>
+                
+                <div class="login-tabs">
+                    <button class="tab active" onclick="switchLoginTab('student')">Student Login</button>
+                    <button class="tab" onclick="switchLoginTab('teacher')">Teacher Login</button>
+                </div>
+
+                <!-- Student Login Form -->
+                <div id="studentLoginForm">
+                    <div class="form-group">
+                        <label>Student ID</label>
+                        <input type="text" id="studentId" placeholder="Enter your student ID">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="studentPassword" placeholder="Enter your password">
+                    </div>
+                    <button onclick="studentLogin()">Login as Student</button>
+                </div>
+
+                <!-- Teacher Login Form -->
+                <div id="teacherLoginForm" style="display: none;">
+                    <div class="form-group">
+                        <label>Teacher ID</label>
+                        <input type="text" id="teacherId" placeholder="Enter your teacher ID">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="teacherPassword" placeholder="Enter your password">
+                    </div>
+                    <button onclick="teacherLogin()">Login as Teacher</button>
+                </div>
+
+                <p style="text-align: center; margin-top: 20px; color: #666; font-size: 14px;">
+                    Demo: Student ID: S001, Teacher ID: T001, Password: password
+                </p>
+            </div>
+        </div>
+
+        <!-- Teacher Dashboard -->
+        <div id="teacherPage" class="page">
+            <div class="header">
+                <h1>👨‍🏫 Teacher Dashboard</h1>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+
+            <div class="success-message" id="teacherSuccessMsg"></div>
+
+            <h2>Mark Attendance</h2>
+            <div class="student-list" id="studentListAttendance"></div>
+
+            <h2 style="margin-top: 40px;">Manage Students</h2>
+            <button class="btn-secondary" onclick="showPage('addStudentPage')">Add New Student</button>
+            <div class="student-list" id="studentListManage" style="margin-top: 20px;"></div>
+        </div>
+
+        <!-- Add Student Page -->
+        <div id="addStudentPage" class="page">
+            <div class="header">
+                <h1>➕ Add New Student</h1>
+                <button class="logout-btn" onclick="showPage('teacherPage')">Back to Dashboard</button>
+            </div>
+
+            <div class="success-message" id="addStudentSuccessMsg"></div>
+            <div class="error-message" id="addStudentErrorMsg"></div>
+
+            <form onsubmit="addStudent(event)">
+                <div class="form-group">
+                    <label>Student ID</label>
+                    <input type="text" id="newStudentId" required placeholder="e.g., S004">
+                </div>
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text" id="newStudentName" required placeholder="Enter full name">
+                </div>
+                <div class="form-group">
+                    <label>Class</label>
+                    <input type="text" id="newStudentClass" required placeholder="e.g., 10-A">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="newStudentEmail" required placeholder="student@example.com">
+                </div>
+                <button type="submit">Add Student</button>
+                <button type="button" class="btn-secondary" onclick="showPage('teacherPage')">Cancel</button>
+            </form>
+        </div>
+
+        <!-- Student Dashboard -->
+        <div id="studentPage" class="page">
+            <div class="header">
+                <h1>👨‍🎓 Student Dashboard</h1>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+
+            <div id="studentInfo"></div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalClasses">0</h3>
+                    <p>Total Classes</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="presentCount">0</h3>
+                    <p>Present</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="absentCount">0</h3>
+                    <p>Absent</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="attendancePercent">0%</h3>
+                    <p>Attendance Rate</p>
+                </div>
+            </div>
+
+            <h2>Attendance Overview</h2>
+            <div class="chart-container">
+                <canvas id="attendanceChart"></canvas>
+            </div>
+
+            <h2>Recent Attendance History</h2>
+            <table class="attendance-table" id="attendanceHistory"></table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
