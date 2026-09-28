@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Audit Progress | ShieldCheck</title>
+  </head>
+  <body data-page="audit-progress">
+    <div class="wrap" style="max-width: 760px">
+      <div class="head">
+        <h1>Audit progress</h1>
+        <a href="dashboard.html">Back to dashboard</a>
+      </div>
+      <div class="card">
+        <div class="info">
+          <div><small>Business</small><b id="biz"></b></div>
+          <div><small>Website</small><b id="site"></b></div>
+          <div><small>Request ID</small><b id="rid"></b></div>
+          <div><small>Submitted</small><b id="sdate"></b></div>
+          <div><small>Status</small><span id="stat"></span></div>
+        </div>
+        <div class="bar"><i id="fill" style="width: 0"></i></div>
+        <p class="sub" id="pct" style="margin: 6px 0 0"></p>
+        <ul class="tl" id="tl"></ul>
+      </div>
+      <p style="margin: 24px 0 60px">
+        <a class="btn" href="report.html">View sample final report</a>
+      </p>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

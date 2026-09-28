@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Register | ShieldCheck</title>
+  </head>
+  <body data-page="register">
+    <div class="wrap">
+      <div class="formbox card">
+        <h2>Create your account</h2>
+        <p class="sub">It takes about a minute.</p>
+        <form novalidate>
+          <div class="field">
+            <label for="biz">Business name</label><input id="biz" required />
+          </div>
+          <div class="field">
+            <label for="owner">Owner / contact name</label
+            ><input id="owner" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label
+            ><input id="email" type="email" data-v="email" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label
+            ><input id="phone" data-v="phone" required />
+          </div>
+          <div class="field">
+            <label for="password">Password</label
+            ><input id="password" type="password" data-v="pass" required />
+          </div>
+          <div class="field">
+            <label for="confirm">Confirm password</label
+            ><input id="confirm" type="password" data-v="match" required />
+          </div>
+          <button class="btn" style="width: 100%">Create account</button>
+        </form>
+        <div id="success" class="msg hide">
+          <h2>Account created</h2>
+          <p>Your account is ready.</p>
+          <a class="btn" href="dashboard.html">Continue to dashboard</a>
+        </div>
+        <p class="row">
+          Already registered?&nbsp;<a href="login.html">Log in</a>
+        </p>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

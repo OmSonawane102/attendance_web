@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Security Report | ShieldCheck</title>
+  </head>
+  <body data-page="report">
+    <div class="wrap" style="max-width: 860px">
+      <div class="head noprint">
+        <a href="dashboard.html">Back to dashboard</a
+        ><button class="btn" id="print">Print / Download Report</button>
+      </div>
+      <article class="report">
+        <h1>Security Audit Report</h1>
+        <div class="info">
+          <div><small>Business</small>Sharma Legal Associates</div>
+          <div><small>Website</small>www.sharma-legal.in</div>
+          <div><small>Audit date</small>2026-09-10</div>
+          <div><small>Request ID</small>#AUD-1005</div>
+        </div>
+        <div class="score">
+          <b>78/100</b>
+          <div>
+            Security rating: <b style="font-size: 1.3rem">Good</b><br />No
+            critical issues, but several improvements are recommended.
+          </div>
+        </div>
+        <h2>Executive summary</h2>
+        <p>
+          The website is fundamentally sound. We found no critical issues, one
+          high-priority gap in security headers, and a few medium and low items
+          that are quick to fix.
+        </p>
+        <h2>Findings</h2>
+        <div class="find crit">
+          <h4>Critical: none</h4>
+          <p>No critical issues found.</p>
+        </div>
+        <div class="find high">
+          <h4>Missing security headers</h4>
+          <p>
+            <b>Severity: High.</b> Headers such as Content-Security-Policy are
+            not set, so browsers cannot block some attacks.<br /><b
+              >Recommendation:</b
+            >
+            Add CSP, X-Frame-Options and HSTS headers.
+          </p>
+        </div>
+        <div class="find med">
+          <h4>Weak password policy</h4>
+          <p>
+            <b>Severity: Medium.</b> Accounts accept short, simple passwords.<br /><b
+              >Recommendation:</b
+            >
+            Require 10+ characters and block common passwords.
+          </p>
+        </div>
+        <div class="find med">
+          <h4>Missing input validation</h4>
+          <p>
+            <b>Severity: Medium.</b> The contact form accepts unexpected
+            input.<br /><b>Recommendation:</b> Validate and sanitize input on
+            the server.
+          </p>
+        </div>
+        <div class="find low">
+          <h4>Missing security-related metadata</h4>
+          <p>
+            <b>Severity: Low.</b> No security.txt file is published.<br /><b
+              >Recommendation:</b
+            >
+            Add /.well-known/security.txt with a contact address.
+          </p>
+        </div>
+        <div class="find info">
+          <h4>Server technology disclosure</h4>
+          <p>
+            <b>Severity: Informational.</b> Response headers reveal the server
+            software and version.<br /><b>Recommendation:</b> Hide version
+            details in server settings.
+          </p>
+        </div>
+        <h2>Recommendations</h2>
+        <p>
+          Fix the headers first, then strengthen the password policy and input
+          validation. Re-test after changes.
+        </p>
+        <h2>Conclusion</h2>
+        <p>
+          With a few small changes the site can move from Good to Excellent.
+          This is a sample report for demonstration.
+        </p>
+      </article>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Request Audit | ShieldCheck</title>
+  </head>
+  <body data-page="audit-request">
+    <div class="wrap">
+      <div class="formbox wide card">
+        <h2>Request a security audit</h2>
+        <p class="sub">Tell us what to check.</p>
+        <form novalidate>
+          <div class="field">
+            <label for="bn">Business name</label><input id="bn" required />
+          </div>
+          <div class="field">
+            <label for="url">Website URL</label
+            ><input
+              id="url"
+              data-v="url"
+              placeholder="https://www.example.com"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="type">Business type</label
+            ><select id="type" required>
+              <option value="">Select…</option>
+              <option>Retail / e-commerce</option>
+              <option>Services</option>
+              <option>Food and hospitality</option>
+              <option>Education</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="email">Contact email</label
+            ><input id="email" data-v="email" required />
+          </div>
+          <div class="field">
+            <label for="at">Audit type</label
+            ><select id="at" required>
+              <option value="">Select…</option>
+              <option>Basic website scan</option>
+              <option>Web application audit</option>
+              <option>Full audit with review</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="desc">Description</label
+            ><textarea id="desc" rows="3" required></textarea>
+          </div>
+          <div class="field">
+            <label for="notes">Additional notes (optional)</label
+            ><textarea id="notes" rows="2"></textarea>
+          </div>
+          <button class="btn">Submit request</button>
+        </form>
+        <div id="success" class="msg hide">
+          <h2>Audit request submitted successfully</h2>
+          <p>Your Request ID is <b>#AUD-1024</b>.</p>
+          <a class="btn" href="audit-progress.html?id=AUD-1024"
+            >Track this audit</a
+          >
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

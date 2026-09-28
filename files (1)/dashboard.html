@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Dashboard | ShieldCheck</title>
+  </head>
+  <body data-page="dashboard">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <h1>Welcome, <span id="who"></span></h1>
+          <p class="sub" style="margin: 0">Here is where your audits stand.</p>
+        </div>
+        <a class="btn" href="audit-request.html">Request new audit</a>
+      </div>
+      <div class="grid">
+        <div class="card stat"><b id="total"></b><span>Total audits</span></div>
+        <div class="card stat"><b id="pend"></b><span>Pending</span></div>
+        <div class="card stat"><b id="prog"></b><span>In progress</span></div>
+        <div class="card stat"><b id="done"></b><span>Completed</span></div>
+      </div>
+      <div class="tbl card">
+        <table>
+          <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>Website</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Login | ShieldCheck</title>
+  </head>
+  <body data-page="login">
+    <div class="wrap">
+      <div class="formbox card">
+        <h2>Welcome back</h2>
+        <p class="sub">Log in to see your audits.</p>
+        <form novalidate>
+          <div class="field">
+            <label for="email">Email</label
+            ><input id="email" type="email" data-v="email" required />
+          </div>
+          <div class="field">
+            <label for="password">Password</label
+            ><input id="password" type="password" required />
+          </div>
+          <div class="row">
+            <label style="margin: 0; font-weight: 400"
+              ><input type="checkbox" />Remember me</label
+            ><a
+              href="#"
+              onclick="
+                alert('Demo only: no reset email is sent.');
+                return false;
+              "
+              >Forgot password?</a
+            >
+          </div>
+          <button class="btn" style="width: 100%">Log in</button>
+        </form>
+        <p class="row">
+          New here?&nbsp;<a href="register.html">Create an account</a>
+        </p>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
